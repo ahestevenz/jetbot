@@ -40,6 +40,14 @@ RUN wget --quiet --show-progress --progress=bar:force:noscroll --no-check-certif
     pip3 install ${TENSORFLOW_WHL} --verbose && \
     rm ${TENSORFLOW_WHL}
 
+# ===============================
+# INSTALL WAVESHARE MOTOR DRIVERS
+# ===============================
+ENV WAVESHARE_REPO_DIR=/opt/
+RUN cd ${WAVESHARE_REPO_DIR} && \
+    git clone https://github.com/waveshare/jetbot && \
+    cd jetbot && \
+    python3 setup.py install 
 
 # ==============
 # INSTALL OPENCV
